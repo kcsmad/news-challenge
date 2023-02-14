@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Icon, Image, Menu, Segment } from "semantic-ui-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const MenuHeader = () => {
-    const [currentPage, setCurrentPage] = useState("home");
+    const [currentPage, setCurrentPage] = useState("");
+    const { pathname } = useLocation();
+    const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
 
     useEffect(() => {
-
+        const path = pathname.split('/')[1];
+        setCurrentPage(path);
     }, []);
 
     return (
         <Menu pointing secondary>
             <Menu.Item
-                active={currentPage === "home"}
-                onClick={() => console.log("test")}
+                active={currentPage === ""}
             >
                 <Image
                     as={NavLink}
@@ -22,16 +25,10 @@ const MenuHeader = () => {
                 />
                 News
             </Menu.Item>
-            <Menu.Item
-                name="Articles"
-                active={currentPage === "articles"}
-                onClick={() => console.log("test")}
-            />
 
             <Menu.Menu position="right">
                 <Menu.Item
                     name="Sign Up"
-                    active={currentPage === "register"}
                     onClick={() => console.log("test")}
                 >
                     <Icon name="signup" />
@@ -40,7 +37,7 @@ const MenuHeader = () => {
                 <Menu.Item
                     name="Sign In"
                     active={currentPage === "login"}
-                    onClick={() => console.log("test")}
+                    onClick={() => loginWithRedirect()}
                 >
                     <Icon name="sign-in" />
                     Sign In

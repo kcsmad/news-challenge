@@ -5,6 +5,8 @@ import {
     Route
 } from 'react-router-dom';
 
+import { Auth0Provider } from "@auth0/auth0-react";
+
 import {
     MenuHeader,
 } from '../components';
@@ -14,14 +16,22 @@ import {
 } from '../pages';
 
 const routing = (
-    <React.StrictMode>
-        <Router>
-            <MenuHeader />
-            <Routes>
-                <Route path='/' element={<HomePage />} />
-            </Routes>
-        </Router>
-    </React.StrictMode>
+    <Auth0Provider
+        domain={`${process.env.REACT_APP_AUTH0_DOMAIN}`}
+        clientId={`${process.env.REACT_APP_AUTH0_CLIENT_ID}`}
+        authorizationParams={{
+            redirect_uri: window.location.origin
+        }}
+    >
+        <React.StrictMode>
+            <Router>
+                <MenuHeader />
+                <Routes>
+                    <Route path='/' element={<HomePage />} />
+                </Routes>
+            </Router>
+        </React.StrictMode>
+    </Auth0Provider>
 )
 
 export default routing;
