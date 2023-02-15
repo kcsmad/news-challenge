@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { Icon, Image, Menu, Segment } from "semantic-ui-react";
-import { useAuth0 } from "@auth0/auth0-react";
+import { Image, Menu } from "semantic-ui-react";
+import { LoginMenu } from "./login-menu";
 
 const MenuHeader = () => {
     const [currentPage, setCurrentPage] = useState("");
     const { pathname } = useLocation();
-    const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
 
     useEffect(() => {
         const path = pathname.split('/')[1];
@@ -27,21 +26,7 @@ const MenuHeader = () => {
             </Menu.Item>
 
             <Menu.Menu position="right">
-                <Menu.Item
-                    name="Sign Up"
-                    onClick={() => console.log("test")}
-                >
-                    <Icon name="signup" />
-                    Sign Up
-                </Menu.Item>
-                <Menu.Item
-                    name="Sign In"
-                    active={currentPage === "login"}
-                    onClick={() => loginWithRedirect()}
-                >
-                    <Icon name="sign-in" />
-                    Sign In
-                </Menu.Item>
+                <LoginMenu />
             </Menu.Menu>
         </Menu>
     )
