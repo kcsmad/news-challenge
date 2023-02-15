@@ -15,7 +15,7 @@ const AuthenticatedMenu = ({ user }: AuthenticatedMenuProps) => {
             name="User"
         >
             <Icon name="user" />
-            {user?.name}
+            Hello, {user?.name}
         </Menu.Item>
     )
 }
