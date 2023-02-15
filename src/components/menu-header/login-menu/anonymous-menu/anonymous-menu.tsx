@@ -5,13 +5,25 @@ const AnonymousMenu = () => {
     const { loginWithRedirect } = useAuth0();
 
     return (
-        <Menu.Item
-            name="Sign In"
-            onClick={() => loginWithRedirect()}
-        >
-            <Icon name="sign-in"/>
-            Sign In
-        </Menu.Item>
+        <>
+            <Menu.Item
+                name="Sign In"
+                onClick={() => console.log("clicked")}
+                data-testid={"anonymous-menu-signup"}
+            >
+                <Icon name="signup"/>
+                Sign Up
+            </Menu.Item>
+
+            <Menu.Item
+                name="Sign In"
+                onClick={() => loginWithRedirect()}
+                data-testid={"anonymous-menu-sign-in"}
+            >
+                <Icon name="sign-in"/>
+                Sign In
+            </Menu.Item>
+        </>
     )
 }
 
