@@ -3,7 +3,7 @@ import { Container } from "semantic-ui-react";
 const HomePage = () => {
 
     return (
-        <Container>
+        <Container data-testid="main-container">
             Text
         </Container>
     )
