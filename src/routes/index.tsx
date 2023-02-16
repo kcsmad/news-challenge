@@ -13,6 +13,7 @@ import {
 
 import {
     HomePage,
+    RegistrationPage,
 } from '../pages';
 
 const routing = (
@@ -28,6 +29,7 @@ const routing = (
                 <MenuHeader />
                 <Routes>
                     <Route path='/' element={<HomePage />} />
+                    <Route path='/sign-up' element={<RegistrationPage />} />
                 </Routes>
             </Router>
         </React.StrictMode>
