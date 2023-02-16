@@ -2,7 +2,7 @@ import { Icon, Menu } from "semantic-ui-react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const AnonymousMenu = () => {
-    const { loginWithRedirect } = useAuth0();
+    const { loginWithPopup } = useAuth0();
 
     return (
         <>
@@ -17,7 +17,7 @@ const AnonymousMenu = () => {
 
             <Menu.Item
                 name="Sign In"
-                onClick={() => loginWithRedirect()}
+                onClick={() => loginWithPopup()}
                 data-testid={"anonymous-menu-sign-in"}
             >
                 <Icon name="sign-in"/>
