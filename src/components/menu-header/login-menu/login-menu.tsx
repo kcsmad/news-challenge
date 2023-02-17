@@ -4,7 +4,12 @@ import { AnonymousMenu } from "./anonymous-menu";
 import { AuthenticatedMenu } from "./authenticated-menu";
 
 const LoginMenu =  () => {
-    const { user, isAuthenticated } = useAuth0();
+    const { user, isAuthenticated, getIdTokenClaims } = useAuth0();
+
+    useEffect(() => {
+        getIdTokenClaims().then(resp => console.log(resp))
+        console.log(user)
+    }, [])
 
     return isAuthenticated ? <AuthenticatedMenu user={user} /> : <AnonymousMenu />;
 }

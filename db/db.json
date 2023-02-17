@@ -1,0 +1,24 @@
+{
+  "articles": [
+    {
+      "title": "First Article Test",
+      "slug": "first-article-test",
+      "images": [
+        "first_article_main.jpg",
+        ""
+      ],
+      "description": "This is our first article test.",
+      "category": "Engineering",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec molestie arcu, vitae vulputate lorem. Aliquam scelerisque, mi at laoreet finibus, magna turpis facilisis lacus, quis semper mauris turpis in nisi. Duis hendrerit ornare augue, ut congue elit cursus quis. Nam aliquet arcu mi. Nam congue tincidunt massa eget accumsan. Curabitur arcu odio, aliquet sit amet tempus congue, dictum id lectus. Vestibulum a lacus lobortis, facilisis lectus ut, fringilla nisi. Etiam consequat, quam eu scelerisque varius, felis nisi convallis sem, lacinia pulvinar neque purus ac libero. Mauris et vehicula purus. In vulputate vitae tellus rutrum congue. Phasellus gravida nisl non dolor venenatis, sed blandit tellus tincidunt.\n\nCurabitur blandit, elit in tincidunt eleifend, erat orci bibendum augue, quis accumsan diam ex quis nisi. Nam ut lacinia dolor. Mauris ornare, diam a iaculis dignissim, mauris velit iaculis dolor, venenatis interdum ligula tortor vitae nunc. Donec placerat eleifend enim, eu ornare massa vestibulum id. Fusce tincidunt eros sed tristique porttitor. Morbi sit amet bibendum felis, sed bibendum ante. Nam est ligula, hendrerit non malesuada vitae, vehicula id sem. Quisque fermentum sodales nibh, eu facilisis lacus finibus non. Donec nec mi sem. Proin facilisis euismod vestibulum.",
+      "author": {
+        "name": "Test 1"
+      }
+    }
+  ],
+  "categories": [
+    "Engineering",
+    "Design",
+    "Product",
+    "DevOps"
+  ]
+}
