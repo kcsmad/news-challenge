@@ -32,17 +32,19 @@ const RegistrationPage = () => {
                     message: resp.response.data.message
             }))
 
-        await UserService.doRoleAssignment([user.user_id])
-            .then(resp => setResponseObj({
-                code: resp.status,
-                message: ""
-            }))
-            .catch(resp => setResponseObj({
-                code: resp.response.status,
-                message: resp.response.data.message
-            })).finally(() => {
-                setLoading(false)
-            });
+        UserService.getUserRoles(user.user_id)
+
+        // await UserService.doRoleAssignment([user.user_id])
+        //     .then(resp => setResponseObj({
+        //         code: resp.status,
+        //         message: ""
+        //     }))
+        //     .catch(resp => setResponseObj({
+        //         code: resp.response.status,
+        //         message: resp.response.data.message
+        //     })).finally(() => {
+        //         setLoading(false)
+        //     });
     }
 
     const updateUserStat = (event: ChangeEvent<HTMLInputElement>, field: keyof User) => {
