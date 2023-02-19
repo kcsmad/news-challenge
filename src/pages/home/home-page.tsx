@@ -4,9 +4,7 @@ import { UserService } from "../../services";
 
 const HomePage = () => {
 
-    useEffect(() => {
-        UserService.testGettingAllUsers().then(resp => console.log(resp));
-    }, [])
+    useEffect(() => {}, [])
 
     return (
         <Container data-testid="main-container">
