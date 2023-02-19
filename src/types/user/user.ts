@@ -1,3 +1,5 @@
+import { Article } from '../article';
+
 export default interface User {
     user_id: string,
     email: string,
@@ -9,4 +11,5 @@ export default interface User {
     picture: string,
     roles: string[],
     connection?: string,
+    bookmarkedArticles?: Article[],
 }
