@@ -22,6 +22,18 @@ const AuthenticatedMenu = ({ user }: AuthenticatedMenuProps) => {
                 Hello, {user?.name}
             </Menu.Item>
             <Menu.Item
+                name="Write an Article"
+            >
+                <Icon name="edit" />
+                Write
+            </Menu.Item>
+            <Menu.Item
+                name="Validation"
+            >
+                <Icon name="paper plane outline" />
+                Approval
+            </Menu.Item>
+            <Menu.Item
                 name="Bookmarks"
             >
                 <Icon name="bookmark" />
