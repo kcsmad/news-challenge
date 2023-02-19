@@ -16,6 +16,11 @@ import {
     RegistrationPage,
 } from '../pages';
 
+import {
+    MyArticlesPage,
+    WriteArticlePage,
+} from '../pages/article';
+
 const routing = (
     <Auth0Provider
         domain={`${process.env.REACT_APP_AUTH0_DOMAIN}`}
@@ -30,6 +35,8 @@ const routing = (
                 <Routes>
                     <Route path='/' element={<HomePage />} />
                     <Route path='/sign-up' element={<RegistrationPage />} />
+                    <Route path='/my-articles' element={<MyArticlesPage />} />
+                    <Route path='/write-article' element={<WriteArticlePage />} />
                 </Routes>
             </Router>
         </React.StrictMode>
