@@ -2,7 +2,11 @@ import { Icon, Menu } from "semantic-ui-react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from "react-router-dom";
 
-const AnonymousMenu = () => {
+type AnonymousMenuProps = {
+    currentPage: string
+}
+
+const AnonymousMenu = ({ currentPage }: AnonymousMenuProps) => {
     const { loginWithPopup } = useAuth0();
     const navigate = useNavigate();
 
@@ -10,6 +14,7 @@ const AnonymousMenu = () => {
         <>
             <Menu.Item
                 name="Sign Up"
+                active={currentPage === 'sign-up'}
                 onClick={() => navigate('sign-up')}
                 data-testid={"anonymous-menu-signup"}
             >

@@ -1,17 +1,16 @@
 import { useEffect } from "react";
+import {useLocation, useNavigate} from "react-router-dom";
 import { useAuth0, User } from "@auth0/auth0-react";
 import { Icon, Menu } from "semantic-ui-react";
 
 type AuthenticatedMenuProps = {
-    user: User | undefined
+    user: User | undefined,
+    currentPage: string
 }
 
-const AuthenticatedMenu = ({ user }: AuthenticatedMenuProps) => {
+const AuthenticatedMenu = ({ user, currentPage }: AuthenticatedMenuProps) => {
     const { logout } = useAuth0()
-
-    useEffect(() => {
-        console.log(user)
-    }, [])
+    const navigate = useNavigate();
 
     return (
         <>
@@ -22,10 +21,12 @@ const AuthenticatedMenu = ({ user }: AuthenticatedMenuProps) => {
                 Hello, {user?.name}
             </Menu.Item>
             <Menu.Item
-                name="Write an Article"
+                name="My Articles"
+                active={currentPage === 'my-articles'}
+                onClick={() => navigate('my-articles')}
             >
                 <Icon name="edit" />
-                Write
+                My Articles
             </Menu.Item>
             <Menu.Item
                 name="Validation"

@@ -26,7 +26,7 @@ const MenuHeader = () => {
             </Menu.Item>
 
             <Menu.Menu position="right">
-                <LoginMenu />
+                <LoginMenu currentPage={currentPage} />
             </Menu.Menu>
         </Menu>
     )

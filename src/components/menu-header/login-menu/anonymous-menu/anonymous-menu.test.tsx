@@ -10,13 +10,13 @@ const mockedUseAuth0 = mocked(useAuth0, true)
 describe('Anonymous Login Menu Component', () => {
 
     it('should render without errors', () => {
-        render(<AnonymousMenu />);
+        render(<AnonymousMenu currentPage="" />);
         const component =  screen.getByTestId("anonymous-menu-signup")
         expect(component).toBeTruthy();
     })
 
     it('should render anonymous menu sign-in', () => {
-        render(<AnonymousMenu />);
+        render(<AnonymousMenu currentPage="" />);
         const component =  screen.getByTestId("anonymous-menu-sign-in")
         expect(component).toBeTruthy();
     })
