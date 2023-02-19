@@ -1,1 +1,1 @@
-export { default as ArticleService } from './article-services'
+export { default as ArticleService } from './article-service'

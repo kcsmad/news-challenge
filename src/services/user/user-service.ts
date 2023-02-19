@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { User } from '../../types';
+import { Article } from "../../types/article";
 
 axios.defaults.baseURL = "https://kcsmad.eu.auth0.com/api/v2/"
 axios.defaults.headers.post['Content-Type'] = 'application/json';
@@ -11,15 +12,12 @@ const doRegistration = async (user: User) => (
     })
 )
 
-const doRoleAssignment = async (usersId: string[]) => (
-    await axios.post('roles/rol_2m652gE72Gkd0GL1/users', { "users": usersId })
+const getUserRoles = (userId: string): string | null => (
+    localStorage.getItem(userId)
 )
-const testGettingAllUsers = async (): Promise<User[]> => (
-   await axios.get<User[]>('users').then(resp => resp.data)
-)
+
 
 export default {
     doRegistration,
-    doRoleAssignment,
-    testGettingAllUsers,
+    getUserRoles
 }
