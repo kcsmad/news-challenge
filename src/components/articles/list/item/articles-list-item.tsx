@@ -3,18 +3,24 @@ import { Article } from "../../../../types";
 
 type ArticlesListItemProps = {
     article: Article,
+    redirectCallback?: Function,
 }
 
-const ArticlesListItem = ({ article }: ArticlesListItemProps) => (
-    <List.Item>
-        <List.Content as='a'>{article.title}</List.Content>
+const ArticlesListItem = ({ article, redirectCallback }: ArticlesListItemProps) => (
+    <List.Item
+        data-testid="article-list-item"
+        onClick={() => { if (redirectCallback) redirectCallback(article.id); }}
+    >
+        <List.Content as='a'>
+            {article.title}
+        </List.Content>
         <List.Content floated="right">
-            {article.isPendingApproval ? (
-                <Label color="orange">
+            {article.isPendingApproval && !article.isPublished ? (
+                <Label data-testid="article-status-pending-approval" color="orange">
                     Pending Approval
                 </Label>
             ) : (
-                <Label color="green">
+                <Label data-testid="article-status-approved" color="green">
                     Published
                 </Label>
             )}
