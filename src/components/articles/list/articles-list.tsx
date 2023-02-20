@@ -5,17 +5,27 @@ import { Article } from "../../../types";
 
 type ArticlesListProps = {
     articles: Article[]
+    redirectCallback?: Function,
 }
 
-const ArticlesList = ({ articles }: ArticlesListProps) => {
+const ArticlesList = ({ articles, redirectCallback }: ArticlesListProps) => {
     const navigate = useNavigate();
 
     return (
-        <List animated selection divided verticalAlign="middle">
+        <List
+            animated
+            selection
+            divided
+            data-testid="articles-list"
+            verticalAlign="middle"
+        >
             {articles.length > 0
-                ? articles.map(article => <ArticlesListItem article={article} />)
+                ? articles.map(article => <ArticlesListItem key={article.id} article={article} redirectCallback={redirectCallback} />)
                 : (
-                    <Segment placeholder>
+                    <Segment
+                        placeholder
+                        data-testid="articles-list-empty-placeholder"
+                    >
                         <Header icon>
                             <Icon name="warning sign" />
                             You don't have articles on draft or published.
