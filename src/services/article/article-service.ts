@@ -16,7 +16,21 @@ const getMyArticles = (userId: string = ""): Article[] => {
     }
 }
 
+const getArticleById = (articleId: string = "", userId: string = ""): Article | undefined => {
+    try {
+        const resp = LocalStorageService.getArticlesLocalStorage(userId)
+
+        if (resp) {
+            const articles = JSON.parse(resp) as Article[]
+            return articles.filter(article => article.id === articleId)[0]
+        }
+    } catch (e) {
+        console.error(e)
+    }
+}
+
 export default {
     createArticle,
+    getArticleById,
     getMyArticles
 }
