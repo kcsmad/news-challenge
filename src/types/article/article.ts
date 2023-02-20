@@ -7,4 +7,5 @@ export default interface Article {
     isPublished: boolean,
     isPendingApproval: boolean,
     category: string,
+    user_id: string,
 }
