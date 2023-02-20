@@ -13,13 +13,11 @@ import {
 
 import {
     HomePage,
-    RegistrationPage,
-} from '../pages';
-
-import {
+    MyAccountProfile,
     MyArticlesPage,
+    RegistrationPage,
     WriteArticlePage,
-} from '../pages/article';
+} from '../pages';
 
 const routing = (
     <Auth0Provider
@@ -35,8 +33,12 @@ const routing = (
                 <Routes>
                     <Route path='/' element={<HomePage />} />
                     <Route path='/sign-up' element={<RegistrationPage />} />
-                    <Route path='/my-articles' element={<MyArticlesPage />} />
+                    <Route path='/my-articles' index element={<MyArticlesPage />} />
                     <Route path='/write-article' element={<WriteArticlePage />} />
+                    <Route path='/my-article/:id' element={<WriteArticlePage />} />
+                    <Route path='/articles-approval' index element={<MyArticlesPage />} />
+                    <Route path='/approval/:id' element={<WriteArticlePage />} />
+                    <Route path='/my-account' element={<MyAccountProfile />} />
                 </Routes>
             </Router>
         </React.StrictMode>
