@@ -5,6 +5,11 @@ import {
 } from "react";
 
 import {
+    useLocation,
+    useNavigate
+} from "react-router-dom";
+
+import {
     Button,
     Container,
     Dimmer,
@@ -19,11 +24,26 @@ import uuid from "react-uuid";
 import { Article } from "../../../types";
 import { ArticleService } from "../../../services";
 
-
 const WriteArticlePage = () => {
     const { user } = useAuth0();
+    const { state } = useLocation()
+    const navigate = useNavigate();
+
     const [article, setArticle] = useState({} as Article)
     const [isLoading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (state) {
+            const { articleId } = state;
+
+            setLoading(true)
+            const articleToEdit = ArticleService.getArticleById(articleId, user?.sub)
+            if (articleToEdit) {
+                setArticle(articleToEdit);
+            }
+            setLoading(false)
+        }
+    }, [])
 
     const updateUserStat = (
         event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -34,19 +54,31 @@ const WriteArticlePage = () => {
         switch(field) {
             case "title": setArticle({ ...article, title: target.value,  }); break;
             case "content": setArticle({ ...article, content: target.value,  }); break;
+            case "category": setArticle({ ...article, category: target.value }); break;
             case "description": setArticle({ ...article, description: target.value,  }); break;
             case "imageUrl": setArticle({ ...article, imageUrl: target.value,  }); break;
         }
     }
 
     const submitArticle = () => {
-        article.id = uuid();
-        article.isPublished = false;
-        article.isPendingApproval = true;
-
         const myArticles = ArticleService.getMyArticles(user?.sub)
-        myArticles.push(article);
-        ArticleService.createArticle(user?.sub, myArticles)
+
+        if (!state) {
+            article.id = uuid();
+            article.isPublished = false;
+            article.isPendingApproval = true;
+
+            myArticles.push(article);
+            ArticleService.createArticle(user?.sub, myArticles)
+        } else {
+            const { articleId } = state;
+
+            const articles = myArticles.filter(article => article.id !== articleId)
+            articles.push(article);
+            ArticleService.createArticle(user?.sub, articles)
+        }
+
+        navigate('/my-articles')
     }
 
     return (
