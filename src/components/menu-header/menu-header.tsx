@@ -1,27 +1,33 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import {NavLink, useLocation, useNavigate} from "react-router-dom";
 import { Image, Menu } from "semantic-ui-react";
+
 import { LoginMenu } from "./login-menu";
 
 const MenuHeader = () => {
     const [currentPage, setCurrentPage] = useState("");
     const { pathname } = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const path = pathname.split('/')[1];
         setCurrentPage(path);
-    }, []);
+    }, [])
+
+    useEffect(() => {
+        const path = pathname.split('/')[1];
+        if (path !== currentPage) {
+            setCurrentPage(path);
+        }
+    }, [pathname, currentPage])
 
     return (
         <Menu pointing secondary>
             <Menu.Item
                 active={currentPage === ""}
+                onClick={() => navigate('/')}
             >
-                <Image
-                    as={NavLink}
-                    to="/"
-                    src={`${process.env.PUBLIC_URL}/images/swordnews_logo.svg`}
-                />
+                <Image src={`${process.env.PUBLIC_URL}/images/swordnews_logo.svg`} />
                 News
             </Menu.Item>
 
