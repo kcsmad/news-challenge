@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import {useLocation, useNavigate} from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth0, User } from "@auth0/auth0-react";
 import { Icon, Menu } from "semantic-ui-react";
 
@@ -14,9 +14,7 @@ const AuthenticatedMenu = ({ user, currentPage }: AuthenticatedMenuProps) => {
 
     return (
         <>
-            <Menu.Item
-                name="User"
-            >
+            <Menu.Item name="User">
                 <Icon name="smile outline" />
                 Hello, {user?.name}
             </Menu.Item>
@@ -29,19 +27,25 @@ const AuthenticatedMenu = ({ user, currentPage }: AuthenticatedMenuProps) => {
                 My Articles
             </Menu.Item>
             <Menu.Item
-                name="Validation"
+                name="Approval"
+                active={currentPage === 'articles-approval'}
+                onClick={() => navigate('articles-approval')}
             >
                 <Icon name="paper plane outline" />
                 Approval
             </Menu.Item>
             <Menu.Item
                 name="Bookmarks"
+                active={currentPage === 'my-bookmarks'}
+                onClick={() => navigate('my-bookmarks')}
             >
                 <Icon name="bookmark" />
                 My Bookmarks
             </Menu.Item>
             <Menu.Item
                 name="Account"
+                active={currentPage === 'my-account'}
+                onClick={() => navigate('my-account')}
             >
                 <Icon name="user" />
                 My Account
