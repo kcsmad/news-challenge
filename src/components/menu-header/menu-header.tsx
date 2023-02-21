@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {NavLink, useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Image, Menu } from "semantic-ui-react";
 
 import { LoginMenu } from "./login-menu";
@@ -22,7 +22,11 @@ const MenuHeader = () => {
     }, [pathname, currentPage])
 
     return (
-        <Menu pointing secondary>
+        <Menu
+            pointing
+            secondary
+            data-testid="menu-header"
+        >
             <Menu.Item
                 active={currentPage === ""}
                 onClick={() => navigate('/')}
