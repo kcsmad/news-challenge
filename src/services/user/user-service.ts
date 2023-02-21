@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { User } from '../../types';
-import { Article } from "../../types/article";
 
 axios.defaults.baseURL = "https://kcsmad.eu.auth0.com/api/v2/"
 axios.defaults.headers.post['Content-Type'] = 'application/json';
